@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: dump
+# key: dump
+# condition: t
+# --
+use Data::Dumper;
+warn Dumper "${1:Debug}:", ${0:what};

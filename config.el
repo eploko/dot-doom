@@ -157,3 +157,7 @@
 (setq company-show-numbers t)
 
 (use-package! ledger-mode)
+
+;; Better flycheck errors
+(after! flycheck-posframe
+  (flycheck-posframe-configure-pretty-defaults))

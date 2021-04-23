@@ -161,3 +161,24 @@
 ;; Better flycheck errors
 (after! flycheck-posframe
   (flycheck-posframe-configure-pretty-defaults))
+
+;;
+;; Add the JIRA ticket name to the beginning of the commit messages.
+;;
+
+(defun epl/last-occurence (pattern s start prev)
+  (if (string-match pattern s start)
+      (epl/last-occurence pattern s (match-end 0) (match-beginning 0))
+    prev))
+
+(defun epl/extract-branch-tag (branch-name)
+  (let ((TICKET-PATTERN "\\([[:upper:]]+-[[:digit:]]+\\)"))
+  (when-let (last-occurence (epl/last-occurence TICKET-PATTERN branch-name 0 nil))
+    (string-match TICKET-PATTERN branch-name last-occurence)
+    (concat (s-upcase (match-string 0 branch-name)) " "))))
+
+(defun epl/git-commit-insert-branch ()
+  (when-let (jira-ticket (epl/extract-branch-tag (magit-get-current-branch)))
+    (insert jira-ticket)))
+
+(add-hook 'git-commit-setup-hook 'epl/git-commit-insert-branch)

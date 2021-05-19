@@ -116,21 +116,22 @@
 ;;; Programming
 ;;;
 
-;; Make smartparens use paredit bindings, so M-r raises sexp and so on.
-(sp-use-paredit-bindings)
+(after! smartparens
+  ;; Make smartparens use paredit bindings, so M-r raises sexp and so on.
+  (sp-use-paredit-bindings)
 
-;; Make wrapping sexps a little easier.
-;; M-( is handled by default.
-(define-key smartparens-mode-map (kbd "M-[") 'sp-wrap-square)
-(define-key smartparens-mode-map (kbd "M-{") 'sp-wrap-curly)
+  ;; Make wrapping sexps a little easier.
+  ;; M-( is handled by default.
+  (define-key smartparens-mode-map (kbd "M-[") 'sp-wrap-square)
+  (define-key smartparens-mode-map (kbd "M-{") 'sp-wrap-curly)
 
-;; Preserve parens a-la paredit
-(add-hook 'clojure-mode-hook #'smartparens-strict-mode)
-(add-hook 'cider-repl-mode-hook #'smartparens-strict-mode)
-(add-hook 'emacs-lisp-mode-hook #'smartparens-strict-mode)
-(add-hook 'typescript-mode-hook #'smartparens-mode)
-(add-hook 'js-mode-hook #'smartparens-mode)
-(add-hook 'markdown-mode-hook #'smartparens-mode)
+  ;; Preserve parens a-la paredit
+  (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
+  (add-hook 'cider-repl-mode-hook #'smartparens-strict-mode)
+  (add-hook 'emacs-lisp-mode-hook #'smartparens-strict-mode)
+  (add-hook 'typescript-mode-hook #'smartparens-mode)
+  (add-hook 'js-mode-hook #'smartparens-mode)
+  (add-hook 'markdown-mode-hook #'smartparens-mode))
 
 ;; Allow cljr to scan projects
 (setq cljr-warn-on-eval nil)

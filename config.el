@@ -191,6 +191,6 @@
 ;; Keep site settings not in a separate non-versioned file
 ;; http://www.mygooglest.com/fni/dot-emacs.html
 ;; Load it if it exists
-(let ((site-settings "~/.doom.d/site.el"))
+(let ((site-settings "~/.doom.d/site/config.el"))
  (when (file-exists-p site-settings)
    (load-file site-settings)))

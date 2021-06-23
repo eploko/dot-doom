@@ -178,9 +178,9 @@
 
 (defun epl/extract-branch-tag (branch-name)
   (let ((TICKET-PATTERN "\\([[:upper:]]+-[[:digit:]]+\\)"))
-  (when-let (last-occurence (epl/last-occurence TICKET-PATTERN branch-name 0 nil))
-    (string-match TICKET-PATTERN branch-name last-occurence)
-    (concat (s-upcase (match-string 0 branch-name)) " "))))
+    (when-let (last-occurence (epl/last-occurence TICKET-PATTERN branch-name 0 nil))
+      (string-match TICKET-PATTERN branch-name last-occurence)
+      (concat (s-upcase (match-string 0 branch-name)) " "))))
 
 (defun epl/git-commit-insert-branch ()
   (when-let (jira-ticket (epl/extract-branch-tag (magit-get-current-branch)))
@@ -188,9 +188,22 @@
 
 (add-hook 'git-commit-setup-hook 'epl/git-commit-insert-branch)
 
+;;
+;; PlantUML
+;;
+
+;; Enable plantuml-mode for PlantUML files
+(use-package! plantuml-mode
+  :mode (("\\.plantuml\\'" . plantuml-mode)
+         ("\\.puml\\'" . plantuml-mode))
+  :custom
+  (plantuml-default-exec-mode 'jar)
+  (plantuml-jar-path "~/bin/plantuml.jar")
+  (plantuml-output-type 'svg))
+
 ;; Keep site settings not in a separate non-versioned file
 ;; http://www.mygooglest.com/fni/dot-emacs.html
 ;; Load it if it exists
 (let ((site-settings "~/.doom.d/site/config.el"))
- (when (file-exists-p site-settings)
-   (load-file site-settings)))
+  (when (file-exists-p site-settings)
+    (load-file site-settings)))

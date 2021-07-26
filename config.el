@@ -156,26 +156,36 @@
 (after! company
   (defun company-detect-icons-margin (candidate selected)
     "Margin function which picks the appropriate icon set automatically."
-    (company-text-icons-margin candidate selected)))
+    (company-text-icons-margin candidate selected))
 
-(defun ora-company-number ()
-  "Forward to `company-complete-number'.
+  (defun ora-company-number ()
+    "Forward to `company-complete-number'.
 
 Unless the number is potentially part of the candidate.
 In that case, insert the number."
-  (interactive)
-  (let* ((k (this-command-keys))
-         (re (concat "^" company-prefix k)))
-    (if (cl-find-if (lambda (s) (string-match re s))
-                    company-candidates)
-        (self-insert-command 1)
-      (company-complete-number (string-to-number k)))))
+    (interactive)
+    (let* ((k (this-command-keys))
+           (re (concat "^" company-prefix k)))
+      (if (cl-find-if (lambda (s) (string-match re s))
+                      company-candidates)
+          (self-insert-command 1)
+        (company-complete-number (string-to-number k)))))
 
-(let ((map company-active-map))
-  (mapc
-   (lambda (x)
-     (define-key map (format "%d" x) 'ora-company-number))
-   (number-sequence 0 9)))
+  (let ((map company-active-map))
+    (mapc
+     (lambda (x)
+       (define-key map (format "%d" x) 'ora-company-number))
+     (number-sequence 0 9))))
+
+(add-hook 'perl-mode-hook #'lsp)
+(customize-set-value 'lsp-perl-file-filter
+                     (vector ".pl" ".pm" ".t"))
+
+(after! perl-mode
+  (set-company-backend! 'perl-mode
+    '(:separate company-etags)))
+
+(setq-default enable-local-variables t)
 
 (use-package! ledger-mode)
 

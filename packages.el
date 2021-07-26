@@ -57,5 +57,4 @@
 
 (package! reverse-im)
 (package! autothemer)
-(package! aggressive-indent)
 (package! plantuml-mode)

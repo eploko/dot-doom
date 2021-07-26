@@ -147,16 +147,6 @@
 (add-hook 'clojure-mode-hook #'subword-mode)
 (add-hook 'cider-repl-mode-hook #'subword-mode)
 
-;; Keep my code always indented.
-;; (use-package! aggressive-indent
-;;   :hook
-;;   (clojure-mode . aggressive-indent-mode)
-;;   (emacs-lisp-mode . aggressive-indent-mode)
-;;   (lisp-mode . aggressive-indent-mode)
-;;   (css-mode . aggressive-indent-mode)
-;;   (typescript-mode . aggressive-indent-mode)
-;;   (js-mode . aggressive-indent-mode))
-
 ;;(setq lsp-lens-auto-enable t)
 (setq lsp-ui-sideline-show-code-actions nil)
 (setq company-show-numbers t)

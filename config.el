@@ -201,24 +201,12 @@
   (plantuml-jar-path "~/bin/plantuml.jar")
   (plantuml-output-type 'svg))
 
-;;
-;; TabNine AI completions
-;;
-(use-package! company-tabnine
-  :config
-  (add-to-list 'company-backends #'company-tabnine))
-
-
-;;
-;; General completion settings via Company
-;;
-
-;; Trigger completion immediately.
-(setq company-idle-delay 0)
-
-;; Number the candidates (use M-1, M-2 etc to select completions).
-(setq company-show-numbers t)
-
+;; Keep site settings not in a separate non-versioned file
+;; http://www.mygooglest.com/fni/dot-emacs.html
+;; Load it if it exists
+(let ((site-settings "~/.doom.d/site/config.el"))
+  (when (file-exists-p site-settings)
+    (load-file site-settings)))
 
 ;;
 ;; circe (an IRC client)
@@ -248,10 +236,3 @@
          :nick "eploko"
          :channels (:after-auth "#emacs" "#lisp" "#clojure" "#sbcl" "#perl")
          :nickserv-password my-freenode-nickserv-password)))
-
-;; Keep site settings not in a separate non-versioned file
-;; http://www.mygooglest.com/fni/dot-emacs.html
-;; Load it if it exists
-(let ((site-settings "~/.doom.d/site/config.el"))
-  (when (file-exists-p site-settings)
-    (load-file site-settings)))

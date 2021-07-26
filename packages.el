@@ -59,3 +59,4 @@
 (package! autothemer)
 (package! aggressive-indent)
 (package! plantuml-mode)
+(package! company-tabnine)

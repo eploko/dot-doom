@@ -150,6 +150,8 @@
 ;;(setq lsp-lens-auto-enable t)
 (setq lsp-ui-sideline-show-code-actions nil)
 (setq company-show-numbers t)
+(setq company-minimum-prefix-length 1)
+(setq company-idle-delay 0.0)
 
 (use-package! ledger-mode)
 

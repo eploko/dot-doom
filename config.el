@@ -153,6 +153,11 @@
 (setq company-minimum-prefix-length 1)
 (setq company-idle-delay 0.0)
 
+(after! company
+  (defun company-detect-icons-margin (candidate selected)
+    "Margin function which picks the appropriate icon set automatically."
+    (company-text-icons-margin candidate selected)))
+
 (use-package! ledger-mode)
 
 ;; Better flycheck errors

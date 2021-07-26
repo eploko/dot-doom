@@ -57,4 +57,3 @@
 
 (package! reverse-im)
 (package! autothemer)
-(package! plantuml-mode)

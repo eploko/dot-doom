@@ -82,10 +82,11 @@
   (company-tooltip (:background bg-5 :foreground white))
   (company-tooltip-selection (:background bg+15))
   (company-tooltip-annotation (:inherit 'company-tooltip :foreground gray-15))
+  (company-tooltip-annotation-selection (:inherit 'company-tooltip-annotation :background bg+15))
   (company-tooltip-common (:inherit 'company-tooltip :foreground yellow))
   (company-tooltip-common-selection (:background bg+15))
   (company-scrollbar-bg (:inherit 'company-tooltip))
-  (company-scrollbar-fg (:inherit 'company-tooltip))
+  (company-scrollbar-fg (:inherit 'company-tooltip :background bg+5))
   (company-box-scrollbar (:background bg+5))
 
   (magit-section-highlight (:inherit 'highlight))

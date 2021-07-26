@@ -207,3 +207,32 @@
 (let ((site-settings "~/.doom.d/site/config.el"))
   (when (file-exists-p site-settings)
     (load-file site-settings)))
+
+;;
+;; circe (an IRC client)
+;;
+(setq my-credentials-file "~/.doom.d/site/nickserv.el")
+
+(defun my-libera-nickserv-password (&rest _)
+  (with-temp-buffer
+    (insert-file-contents-literally my-credentials-file)
+    (plist-get (read (buffer-string)) :libera)))
+
+(defun my-freenode-nickserv-password (&rest _)
+  (with-temp-buffer
+    (insert-file-contents-literally my-credentials-file)
+    (plist-get (read (buffer-string)) :freenode)))
+
+(setq circe-network-options
+      '(("Libera Chat"
+         :use-tls t
+         :port 6697
+         :nick "eploko"
+         :channels (:after-auth "#emacs" "#lisp" "#clojure" "#sbcl" "#perl" "#australia" "##australia" "#siligong-valley")
+         :nickserv-password my-libera-nickserv-password)
+        ("Freenode"
+         :use-tls t
+         :port 6697
+         :nick "eploko"
+         :channels (:after-auth "#emacs" "#lisp" "#clojure" "#sbcl" "#perl")
+         :nickserv-password my-freenode-nickserv-password)))

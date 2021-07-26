@@ -181,10 +181,6 @@ In that case, insert the number."
 (customize-set-value 'lsp-perl-file-filter
                      (vector ".pl" ".pm" ".t"))
 
-(after! perl-mode
-  (set-company-backend! 'perl-mode
-    '(:separate company-etags)))
-
 (setq-default enable-local-variables t)
 
 (use-package! ledger-mode)

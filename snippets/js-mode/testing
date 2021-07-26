@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: describe('TESTING ...', () => { ... })
+# contributor: Andrey Subbotin <andrey@subbotin.me>
+# key: testing
+# --
+
+describe('TESTING ${1:...}', () => {
+  $0
+});

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: describe('WHEN ...', () => { ... })
+# contributor: Andrey Subbotin <andrey@subbotin.me>
+# key: when
+# --
+
+describe('WHEN ${1:...}', () => {
+  $0
+});

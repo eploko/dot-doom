@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: describe('GIVEN ...', () => { ... })
+# contributor: Andrey Subbotin <andrey@subbotin.me>
+# key: given
+# --
+
+describe('GIVEN ${1:...}', () => {
+  $0
+});

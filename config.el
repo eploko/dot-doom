@@ -258,11 +258,3 @@ In that case, insert the number."
          :nick "eploko"
          :channels (:after-auth "#emacs" "#lisp" "#clojure" "#sbcl" "#perl")
          :nickserv-password my-freenode-nickserv-password)))
-
-;;
-;; Better padding for buffers
-;;
-
-(setq-default header-line-format " ")
-(setq-default left-fringe-width 16)
-(setq-default right-fringe-width 16)

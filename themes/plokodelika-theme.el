@@ -49,7 +49,6 @@
   (hl-line (:background bg+5))
   (show-paren-match (:foreground white))
 
-  (header-line (:background blue-dark :foreground blue-dark))
   (mode-line (:background "#111111" :foreground "#888888"))
   (mode-line-inactive (:background "#222222" :foreground "#888888"))
   (doom-modeline-project-dir (:foreground white))

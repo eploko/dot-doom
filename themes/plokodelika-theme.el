@@ -43,7 +43,7 @@
   (shadow (:foreground gray-15))
   (link (:foreground blue-light :underline t))
 
-  (fringe (:background blue-dark :foreground blue-sky))
+  (fringe (:background blue-dark))
   (window-divider (:foreground "black"))
 
   (hl-line (:background bg+5))

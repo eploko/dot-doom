@@ -111,6 +111,8 @@
 ;;; Popups
 ;;;
 
+(set-popup-rule! "^\\*PLANTUML Preview\\*" :ignore t)
+
 ;; Ignore the popup rules for Cider REPL windows, so they open on the right,
 ;; splitting the frame vertically.
 (after! cider

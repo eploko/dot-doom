@@ -223,7 +223,7 @@ In that case, insert the number."
          ("\\.puml\\'" . plantuml-mode))
   :custom
   (plantuml-default-exec-mode 'jar)
-  (plantuml-jar-path "~/bin/plantuml.jar")
+  (plantuml-jar-path (expand-file-name "~/bin/plantuml.jar"))
   (plantuml-output-type 'svg))
 
 ;; Keep site settings not in a separate non-versioned file
@@ -261,3 +261,21 @@ In that case, insert the number."
          :nick "eploko"
          :channels (:after-auth "#emacs" "#lisp" "#clojure" "#sbcl" "#perl")
          :nickserv-password my-freenode-nickserv-password)))
+
+;;
+;; Make sure images have a white background.
+;;
+
+(defun create-image-with-background-color (args)
+  "Specify background color of inline image through modify `ARGS'."
+  (let* ((file (car args))
+         (type (cadr args))
+         (data-p (caddr args))
+         (props (cdddr args)))
+    ;; Get this return result style from `create-image'.
+    (append (list file type data-p)
+            (list :background "white")
+            props)))
+
+(advice-add 'create-image :filter-args
+            #'create-image-with-background-color)
